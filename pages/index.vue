@@ -25,4 +25,7 @@
       </div>
     </div>
   </section>
+  <AboutContent />
+  <TimelineContent />
+  <ContactContent />
 </template>
