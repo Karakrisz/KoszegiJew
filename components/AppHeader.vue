@@ -1,12 +1,11 @@
 <script setup>
 const links = [
   { name: 'Főoldal', path: '/' },
-  { name: 'Partnerek', path: '/partnerek' },
-  { name: 'Szolgáltatások', path: '/szolgaltatasok' },
-  { name: 'Dokumentumok', path: '/dokumentumok' },
-  { name: 'Ajánlatkérés', path: '/ajanlatkeres' },
-  { name: 'Kapcsolat', path: '/kapcsolat' },
-  { name: 'Facebook', path: '/', imagePath: '/img/header/facebook.svg' },
+  { name: 'Események', path: '/partnerek' },
+  { name: 'Galéria', path: '/szolgaltatasok' },
+  { name: 'Rólunk', path: '/dokumentumok' },
+  { name: 'Kapcsolat', path: '/ajanlatkeres' },
+  { name: 'SZJA 1%', path: '/kapcsolat' },
 ]
 
 const isMenuOpen = ref(false)
@@ -18,8 +17,8 @@ const isMenuOpen = ref(false)
       <div class="logo-box header-content__logo-box">
         <a href="/" class="header-content__logo-box__link">
           <NuxtImg
-            src="/img/header/logo.svg"
-            alt="Biztos Alkuszom"
+            src="/img/logo.svg"
+            alt="Kőszegi Hitközség"
             class="header-content__logo-box__link__img"
             height="100%"
           />
@@ -40,7 +39,7 @@ const isMenuOpen = ref(false)
             <li v-for="link in links" :key="link.path" class="menu__list__li">
               <NuxtLink
                 :to="link.path"
-                :class="['menu__item text-color text-transform-uppercase']"
+                :class="['menu__item text-color']"
               >
                 <template v-if="link.imagePath">
                   <NuxtImg

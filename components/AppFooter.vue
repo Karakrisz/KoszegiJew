@@ -5,15 +5,12 @@
       <div class="spacer__content">
         <a href="/" class="spacer__logo-link">
           <div class="spacer__logo-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              class="spacer__star-icon"
-            >
-              <path
-                d="M12 2L4 10l8 8 8-8-8-8zm0 14.5L6.5 10 12 4.5 17.5 10 12 16.5z"
-              />
-            </svg>
+            <NuxtImg
+              src="/img/logo.svg"
+              alt="Kőszegi Hitközség"
+              class="spacer__logo-icon__img"
+              height="100%"
+            />
           </div>
           <div class="spacer__logo-text">
             <span class="spacer__site-name">KŐSZEGI ZSIDÓ HITKÖZSÉG</span>

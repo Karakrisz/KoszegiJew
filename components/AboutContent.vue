@@ -9,7 +9,7 @@
       <div class="about__content">
         <div class="about__image-container">
           <img
-            src="../images/synagogue-night.jpg"
+            src="/img/about.webp"
             alt="Kőszegi zsinagóga esti megvilágításban"
             class="about__image"
           />
