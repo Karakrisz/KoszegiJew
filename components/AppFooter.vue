@@ -3,7 +3,7 @@
   <footer>
     <div class="spacer">
       <div class="spacer__content">
-        <a href="/" class="spacer__logo-link">
+        <NuxtLink to="/" class="spacer__logo-link">
           <div class="spacer__logo-icon">
             <NuxtImg
               src="/img/logo.svg"
@@ -12,10 +12,7 @@
               height="100%"
             />
           </div>
-          <div class="spacer__logo-text">
-            <span class="spacer__site-name">KŐSZEGI ZSIDÓ HITKÖZSÉG</span>
-          </div>
-        </a>
+        </NuxtLink>
 
         <nav class="spacer__nav">
           <ul class="spacer__nav-list">

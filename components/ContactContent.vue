@@ -80,7 +80,7 @@
         <div class="contact__donate-container">
           <div class="contact__star-image">
             <img
-              src="../images/star-of-david-3d.png"
+              src="/img/footer-logo.webp"
               alt="Dávid csillag 3D"
               class="contact__star"
             />
