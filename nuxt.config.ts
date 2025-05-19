@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Digital Seed Studio',
+      title: 'Kőszegi Zsidó Hitközség',
       htmlAttrs: {
         lang: 'hu',
       },
@@ -17,7 +17,7 @@ export default defineNuxtConfig({
           hid: 'description',
           name: 'description',
           content:
-            'SEO-optimalizált weboldal készítés vállalkozásoknakLegyen weboldalad gyors, modern és keresőoptimalizált!',
+            'Legyen szó ünnepekről, megemlékezésekről vagy közös programokról, mindenkit szeretettel várunk, hogy együtt éljük meg hagyományainkat és erősítsük a közösségi összetartozást.',
         },
         { name: 'format-detection', content: 'telephone=no' },
         { hid: 'robots', name: 'robots', content: 'index, follow' },

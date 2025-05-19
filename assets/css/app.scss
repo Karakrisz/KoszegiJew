@@ -1,14 +1,34 @@
-// Variables
+// ==========================================================================
+// 1. VÁLTOZÓK ÉS ALAP BEÁLLÍTÁSOK
+// ==========================================================================
+
 @use 'sass:color';
+
+// Színek
 $primary-color: #fff;
 $secondary-color: #155b9b;
 $text-color: #001647;
 $white: #fff;
 $black: #000;
+$blue: #479dd0;
+$blue-hover: #3498db;
+$dark-grey: #404040;
+$beige-light: #fff9f4;
+$beige-dark: #fcefe3;
+$brown: #cda683;
+$form-bg: #f5f5f5;
+$donate-bg: #222;
 
-// Typography
+// Menü színek
+$menu-bg-color: #1c362b;
+$menu-text-color: #fbfadd;
+$hamburger-bg-color: #fbfadd;
+$hamburger-bar-color: #1c362b;
 
-// Mixins
+// ==========================================================================
+// 2. MIXINEK
+// ==========================================================================
+
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -19,7 +39,22 @@ $black: #000;
   grid-template-columns: repeat($columns, 1fr);
 }
 
-// Keyframe Animations
+@mixin responsive($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 991px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media screen and (max-width: 767px) {
+      @content;
+    }
+  }
+}
+
+// ==========================================================================
+// 3. KEYFRAME ANIMÁCIÓK
+// ==========================================================================
+
 @keyframes gradient-animation {
   0% {
     background-position: 0% 50%;
@@ -43,7 +78,10 @@ $black: #000;
   }
 }
 
-// Global Styles
+// ==========================================================================
+// 4. GLOBÁLIS STÍLUSOK
+// ==========================================================================
+
 body {
   max-width: 2570px;
   margin: auto;
@@ -58,10 +96,12 @@ button {
 
 ::-webkit-scrollbar {
   width: 8px;
+
   &-track {
     width: 13px;
     background: $white;
   }
+
   &-thumb {
     background: linear-gradient(
       100deg,
@@ -106,44 +146,69 @@ ul {
   list-style: none;
 }
 
-// Utility Classes
+.subpage-content {
+  padding: 3em 7em 0 7em;
+  height: 100vh;
+  background: #fff9f4;
+}
+
+// ==========================================================================
+// 5. SEGÉD OSZTÁLYOK
+// ==========================================================================
+
+// Kurzor
 .cursor {
   cursor: pointer;
 }
+
+// Elrendezés
 .d-flex {
   display: flex;
 }
+
 .grid-2 {
   @include grid(2);
 }
+
 .grid-3 {
   @include grid(3);
 }
+
 .grid-7 {
   @include grid(7);
 }
+
 .float-right {
   float: right;
 }
+
+// Pozicionálás
 .position-relative {
   position: relative;
 }
+
 .position-absolute {
   position: absolute;
 }
+
+// Szöveg formázás
 .text-transform-uppercase {
   text-transform: uppercase;
 }
+
 .t-end {
   text-align: end;
 }
+
 .t-left {
   text-align: left;
 }
+
 .text-center {
   text-align: center;
 }
 
+// Egyéb segéd osztályok
 .map {
   filter: grayscale(100%);
 }
@@ -156,13 +221,16 @@ ul {
 .bg-color-w {
   background-color: $white;
 }
+
 .text-color {
   color: $text-color;
 }
+
 .text-color-w {
   color: $white;
 }
 
+// Gradiens felirat
 .linear-font {
   background: linear-gradient(
     100deg,
@@ -178,20 +246,25 @@ ul {
   animation: gradient-animation 3s ease infinite;
 }
 
-// Font Weight Classes
+// Betűvastagság osztályok
 @for $i from 3 through 7 {
   .f-#{$i}00 {
     font-weight: $i * 100;
   }
 }
 
-// Header Styles
+// ==========================================================================
+// 6. FEJLÉC ÉS HERO STÍLUSOK
+// ==========================================================================
+
+// Fejléc stílusok
 .header-content {
   padding: 1.3em 6em;
   @include flex-center;
 
   &__logo-box {
     width: 20%;
+
     &__link__img {
       width: 100%;
     }
@@ -200,7 +273,7 @@ ul {
   &__nav-box {
     width: 80%;
     @include flex-center;
-    justify-content: space-between;
+    justify-content: end;
   }
 }
 
@@ -219,12 +292,12 @@ ul {
 
   &__list__li:last-child {
     &:last-child {
-      color: #479dd0 !important;
+      color: $blue !important;
     }
   }
 }
 
-// Hero section styles
+// Hero szekció stílusok
 .hero {
   position: relative;
   width: 100%;
@@ -261,15 +334,9 @@ ul {
 
   &__content {
     border-radius: 15px;
-    background: #fff;
+    background: $white;
     width: 45%;
     padding: 3em;
-
-    @media (max-width: 768px) {
-      max-width: 100%;
-      margin-top: 3rem;
-      padding: 1.5rem;
-    }
   }
 
   &__title {
@@ -277,10 +344,6 @@ ul {
     font-weight: 500;
     color: #333;
     margin-bottom: 1.5rem;
-
-    @media (max-width: 768px) {
-      font-size: 1.8rem;
-    }
   }
 
   &__description {
@@ -292,17 +355,17 @@ ul {
 
   &__button {
     border-radius: 6px;
-    background: var(--Primary, #479dd0);
+    background: var(--Primary, $blue);
     display: flex;
     padding: 1em 2em;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: #fff;
+    color: $white;
     width: max-content;
 
     &:hover {
-      background-color: color.adjust(#3498db, $lightness: -10%);
+      background-color: color.adjust($blue-hover, $lightness: -10%);
     }
 
     &:focus {
@@ -319,17 +382,11 @@ ul {
 
   &__hours-container {
     border-radius: 66px;
-    background: #fff;
+    background: $white;
     display: inline-flex;
     padding: 16px 26px;
     align-items: flex-start;
     gap: 10px;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
   }
 
   &__hours-label {
@@ -345,17 +402,17 @@ ul {
     &:last-child {
       margin-right: 0;
     }
-
-    @media (max-width: 768px) {
-      margin-right: 0;
-    }
   }
 }
 
-// About section styles
+// ==========================================================================
+// 7. ABOUT ÉS TIMELINE SZEKCIÓK
+// ==========================================================================
+
+// About szekció stílusok
 .about {
   padding: 5rem 0;
-  background-color: #fff9f4;
+  background-color: $beige-light;
 
   &__container {
     max-width: 1200px;
@@ -381,20 +438,11 @@ ul {
     display: flex;
     gap: 3rem;
     align-items: center;
-
-    @media (max-width: 992px) {
-      flex-direction: column;
-    }
   }
 
   &__image-container {
     flex: 0 0 45%;
     position: relative;
-
-    @media (max-width: 992px) {
-      flex: 0 0 100%;
-      margin-bottom: 2rem;
-    }
   }
 
   &__image {
@@ -407,7 +455,7 @@ ul {
 
   &__image-caption {
     font-size: 0.85rem;
-    color: #000;
+    color: $black;
     font-weight: 200;
     margin-top: 0.5rem;
     font-style: italic;
@@ -415,10 +463,6 @@ ul {
 
   &__text-container {
     flex: 0 0 55%;
-
-    @media (max-width: 992px) {
-      flex: 0 0 100%;
-    }
   }
 
   &__paragraph {
@@ -439,14 +483,14 @@ ul {
     display: inline-block;
     padding: 0.7em 5em;
     border-radius: 6px;
-    background: var(--Dark-Grey, #404040);
-    color: #fff;
+    background: var(--Dark-Grey, $dark-grey);
+    color: $white;
     text-decoration: none;
     font-weight: 500;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: color.adjust(#3498db, $lightness: -10%);
+      background-color: color.adjust($blue-hover, $lightness: -10%);
     }
 
     &:focus {
@@ -456,12 +500,12 @@ ul {
   }
 }
 
-// Timeline section styles
+// Timeline szekció stílusok
 .timeline {
-  background-color: #fcefe3; // Világos bézs háttér
+  background-color: $beige-dark;
   position: relative;
   overflow: hidden;
-  background-image: url('../img/david.svg');
+  background-image: url('/img/david.svg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 
@@ -493,7 +537,7 @@ ul {
     width: 100%;
     height: 100%;
     opacity: 0.15;
-    background-image: url('../images/star-of-david.svg');
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: 80%;
@@ -513,12 +557,8 @@ ul {
       left: 41.7%;
       transform: translateX(-41.7%);
       width: 0.5em;
-      background-color: #cda683; // Barna vonal színe
-      z-index: 1; // Az ikonok magasabb z-index értékkel fognak rendelkezni
-
-      @media (max-width: 768px) {
-        left: 6.2em;
-      }
+      background-color: $brown;
+      z-index: 1;
     }
   }
 
@@ -532,10 +572,6 @@ ul {
     &:last-child {
       margin-bottom: 0;
     }
-
-    @media (max-width: 768px) {
-      grid-template-columns: 70px 60px 1fr;
-    }
   }
 
   &__year {
@@ -544,50 +580,31 @@ ul {
     font-size: 1.8rem;
     font-weight: 700;
     color: #333;
-
-    @media (max-width: 768px) {
-      font-size: 1.3rem;
-      padding-right: 1rem;
-    }
   }
 
   &__icon {
     width: 5em;
     height: 5em;
-    background-color: #cda683; // Barna ikon háttér
+    background-color: $brown;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
     position: relative;
-    z-index: 3; // Magasabb z-index, hogy a vonal felett legyen
+    z-index: 3;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
-
-    @media (max-width: 768px) {
-      width: 4.5em;
-      height: 4.5em;
-    }
   }
 
   &__svg-icon {
     width: 28px;
     height: 28px;
-    fill: #ffffff;
-
-    @media (max-width: 768px) {
-      width: 24px;
-      height: 24px;
-    }
+    fill: $white;
   }
 
   &__content {
     padding-left: 2rem;
-
-    @media (max-width: 768px) {
-      padding-left: 1rem;
-    }
   }
 
   &__title {
@@ -595,24 +612,20 @@ ul {
     font-weight: 600;
     color: #333;
     margin-bottom: 0.3rem;
-
-    @media (max-width: 768px) {
-      font-size: 1.1rem;
-    }
   }
 
   &__text {
     font-size: 1rem;
-    color: #000;
+    color: $black;
     line-height: 1.5;
-
-    @media (max-width: 768px) {
-      font-size: 0.95rem;
-    }
   }
 }
 
-// Contact section styles
+// ==========================================================================
+// 8. CONTACT ÉS SPACER SZEKCIÓK
+// ==========================================================================
+
+// Contact szekció stílusok
 .contact {
   padding: 5rem 0;
 
@@ -620,25 +633,17 @@ ul {
     display: flex;
     max-width: 1200px;
     margin: 0 auto;
-
-    @media (max-width: 992px) {
-      flex-direction: column;
-    }
   }
 
-  // Form side
+  // Form oldal
   &__form-wrapper {
     flex: 1;
-    background-color: #f5f5f5;
+    background-color: $form-bg;
     padding: 2.5rem;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     position: relative;
     left: 0.5em;
-
-    @media (max-width: 768px) {
-      padding: 2rem 1.5rem;
-    }
   }
 
   &__form-container {
@@ -655,7 +660,7 @@ ul {
 
   &__subtitle {
     font-size: 1rem;
-    color: #000;
+    color: $black;
     margin-bottom: 3em;
   }
 
@@ -665,9 +670,10 @@ ul {
 
   .contact__input::-webkit-input-placeholder,
   .contact__textarea::-webkit-input-placeholder {
-    color: var(--Dark-Grey, #404040);
+    color: var(--Dark-Grey, $dark-grey);
     font-weight: 300;
   }
+
   &__input,
   &__textarea {
     width: 100%;
@@ -681,7 +687,7 @@ ul {
 
     &:focus {
       outline: none;
-      border-color: #3498db;
+      border-color: $blue;
     }
 
     &::placeholder {
@@ -704,8 +710,8 @@ ul {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background-color: #3498db;
-    color: #fff;
+    background-color: $blue-hover;
+    color: $white;
     border: none;
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
@@ -716,7 +722,7 @@ ul {
     align-self: flex-start;
 
     &:hover {
-      background-color: color.adjust(#3498db, $lightness: -10%);
+      background-color: color.adjust($blue-hover, $lightness: -10%);
     }
 
     &:focus {
@@ -733,41 +739,33 @@ ul {
 
   &__gdpr-notice {
     opacity: 0.4;
-    color: var(--Dark-Grey, #404040);
+    color: var(--Dark-Grey, $dark-grey);
     font-family: Roboto;
     font-size: 15px;
     font-style: normal;
     font-weight: 300;
     line-height: 150%;
     text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: auto;
-    text-decoration-thickness: auto;
-    text-underline-offset: auto;
-    text-underline-position: from-font;
   }
 
   &__gdpr-link {
-    color: var(--Dark-Grey, #404040);
+    color: var(--Dark-Grey, $dark-grey);
+
     &:hover {
       text-decoration: underline;
     }
   }
 
-  // Donate side
+  // Donate oldal
   &__donate-wrapper {
     flex: 1;
-    background-color: #222;
-    color: #fff;
+    background-color: $donate-bg;
+    color: $white;
     border-radius: 8px;
     display: flex;
     align-items: center;
     padding: 2.5rem;
     z-index: 10;
-
-    @media (max-width: 768px) {
-      padding: 2rem 1.5rem;
-    }
   }
 
   &__donate-container {
@@ -779,10 +777,6 @@ ul {
 
   &__star-image {
     margin-bottom: 2em;
-
-    @media (max-width: 992px) {
-      max-width: 100px;
-    }
   }
 
   &__star {
@@ -796,10 +790,6 @@ ul {
     font-weight: 400;
     margin-bottom: 2rem;
     line-height: 1.4;
-
-    @media (max-width: 768px) {
-      font-size: 1.3rem;
-    }
   }
 
   &__donate-highlight {
@@ -835,9 +825,9 @@ ul {
   }
 }
 
-// Spacer section styles
+// Spacer szekció stílusok
 .spacer {
-  background-color: #fff9f4; // Világos bézs háttér
+  background-color: $beige-light;
   padding: 2.3em 0;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 
@@ -848,11 +838,6 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @media (max-width: 992px) {
-      flex-direction: column;
-      gap: 1.5rem;
-    }
   }
 
   &__logo-link {
@@ -870,12 +855,7 @@ ul {
   &__star-icon {
     width: 24px;
     height: 24px;
-    fill: #3498db;
-
-    @media (max-width: 576px) {
-      width: 20px;
-      height: 20px;
-    }
+    fill: $blue-hover;
   }
 
   &__logo-text {
@@ -893,14 +873,6 @@ ul {
     color: #333;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-
-    @media (max-width: 768px) {
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 576px) {
-      font-size: 0.8rem;
-    }
   }
 
   &__nav-list {
@@ -910,15 +882,6 @@ ul {
     padding: 0;
     gap: 1.5rem;
     flex-wrap: wrap;
-
-    @media (max-width: 992px) {
-      justify-content: center;
-      gap: 1.2rem;
-    }
-
-    @media (max-width: 576px) {
-      gap: 1rem;
-    }
   }
 
   &__nav-item {
@@ -926,7 +889,7 @@ ul {
 
     &--highlight {
       .spacer__nav-link {
-        color: #3498db;
+        color: $blue-hover;
         font-weight: 700;
       }
     }
@@ -934,62 +897,45 @@ ul {
 
   &__nav-link {
     text-decoration: none;
-    color: #000;
+    color: $black;
     font-size: 0.9rem;
     font-weight: 300;
     transition: color 0.3s ease;
 
     &:hover {
-      color: #000;
+      color: $black;
       font-weight: 500;
     }
 
     &--highlight {
       &:hover {
-        color: color.adjust(#3498db, $lightness: -10%);
+        color: color.adjust($blue-hover, $lightness: -10%);
       }
     }
-
-    @media (max-width: 576px) {
-      font-size: 0.8rem;
-    }
   }
 }
 
-// Media Queries
-@mixin responsive($breakpoint) {
-  @if $breakpoint == tablet {
-    @media (min-width: 768px) and (max-width: 991px) {
-      @content;
-    }
-  } @else if $breakpoint == mobile {
-    @media screen and (max-width: 767px) {
-      @content;
-    }
-  }
-}
+// ==========================================================================
+// 9. TABLET RESZPONZÍV STÍLUSOK
+// ==========================================================================
 
 @include responsive(tablet) {
-  // Tablet styles here
-}
-
-// Menu Colors
-$menu-bg-color: #1c362b;
-$menu-text-color: #fbfadd;
-$hamburger-bg-color: #fbfadd;
-$hamburger-bar-color: #1c362b;
-
-@include responsive(mobile) {
+  // Fejléc mobilon
   .header-content {
     padding: 2em;
     flex-direction: row-reverse;
     align-items: center;
+
+    &__logo-box {
+      width: 50%;
+    }
   }
 
   .header-logo-user-box {
     &__search-box {
       margin-left: 0;
     }
+
     &__login-box {
       text-align: unset;
       margin: 1.5em 0 0.7em 0;
@@ -998,6 +944,7 @@ $hamburger-bar-color: #1c362b;
     }
   }
 
+  // Hamburger menü
   .hamburger {
     background-color: $hamburger-bg-color;
     display: flex;
@@ -1014,9 +961,11 @@ $hamburger-bar-color: #1c362b;
         &:nth-child(1) {
           transform: rotate(45deg) translate(5px, 5px);
         }
+
         &:nth-child(2) {
           opacity: 0;
         }
+
         &:nth-child(3) {
           transform: rotate(-45deg) translate(5px, -5px);
         }
@@ -1031,6 +980,7 @@ $hamburger-bar-color: #1c362b;
     }
   }
 
+  // Menü mobilon
   .menu {
     background-color: $menu-bg-color;
     position: fixed;
@@ -1066,22 +1016,429 @@ $hamburger-bar-color: #1c362b;
     }
   }
 
-  .hero__container {
-    flex-direction: column;
-  }
-  .hero__content {
-    width: 100%;
+  // Hero szekció mobilon
+  .hero {
+    height: 100%;
+    min-height: 100%;
+    &__container {
+      flex-direction: column;
+      padding: 1em;
+    }
+
+    &__opening-hours {
+      width: 100%;
+    }
+
+    &__content {
+      width: 100%;
+    }
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__hours-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      width: 100%;
+      border-radius: 1em;
+      margin-top: 1em;
+    }
+
+    &__hours-time {
+      margin-right: 0;
+    }
   }
 
-  .contact__star {
-    width: 100%;
+  // About szekció mobilon
+  .about {
+    padding: 2em 0;
+    &__container {
+      padding: 2em;
+    }
+
+    &__content {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    &__image-container {
+      flex: 0 0 100%;
+      margin-bottom: 2rem;
+    }
+
+    &__text-container {
+      flex: 0 0 100%;
+    }
   }
 
-  .timeline__line {
-    margin-left: 5.2em;
+  // Timeline szekció mobilon
+  .timeline {
+    &__line {
+      margin-left: 1em;
+
+      &::before {
+        left: 6.5em;
+      }
+    }
+
+    &__item {
+      grid-template-columns: 70px 60px 1fr;
+    }
+
+    &__year {
+      font-size: 1.3rem;
+      padding-right: 1rem;
+    }
+
+    &__icon {
+      width: 4.5em;
+      height: 4.5em;
+    }
+
+    &__svg-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__content {
+      padding-left: 1rem;
+    }
+
+    &__title {
+      font-size: 1.1rem;
+    }
+
+    &__text {
+      font-size: 0.95rem;
+    }
   }
 
+  // Contact szekció mobilon
   .contact {
     padding: 0;
+
+    &__container {
+      flex-direction: column;
+    }
+
+    &__form-footer {
+      flex-direction: column;
+    }
+
+    &__form-wrapper,
+    &__donate-wrapper {
+      padding: 3em 2em;
+      left: 0;
+      border-radius: 0;
+    }
+
+    &__title {
+      font-size: 1.8rem;
+    }
+
+    &__donate-title {
+      font-size: 1.3rem;
+    }
+
+    &__star {
+      width: 50%;
+      display: block;
+      margin: auto;
+    }
+  }
+
+  // Spacer szekció mobilon
+  .spacer {
+    &__content {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    &__nav-list {
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    &__site-name {
+      font-size: 0.8rem;
+    }
+
+    &__nav-link {
+      font-size: 0.8rem;
+    }
+
+    &__star-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .subpage-content {
+    padding: 3em;
+    height: 100%;
+  }
+}
+
+// ==========================================================================
+// 10. MOBIL RESZPONZÍV STÍLUSOK - ELSŐ RÉSZ
+// ==========================================================================
+
+@include responsive(mobile) {
+  // Fejléc mobilon
+  .header-content {
+    padding: 2em;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    &__logo-box {
+      width: 100%;
+    }
+  }
+
+  .header-logo-user-box {
+    &__search-box {
+      margin-left: 0;
+    }
+
+    &__login-box {
+      text-align: unset;
+      margin: 1.5em 0 0.7em 0;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  // Hamburger menü
+  .hamburger {
+    background-color: $hamburger-bg-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 4.3em;
+    height: 3.7em;
+    border: none;
+    cursor: pointer;
+    padding: 0.7em;
+
+    &.open {
+      .bar {
+        &:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate(5px, -5px);
+        }
+      }
+    }
+
+    .bar {
+      height: 0.23em;
+      width: 100%;
+      background-color: $hamburger-bar-color;
+      transition: all 0.3s ease;
+    }
+  }
+
+  // Menü mobilon
+  .menu {
+    background-color: $menu-bg-color;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100%;
+    transition: right 0.7s ease;
+    z-index: 1000;
+
+    &--open {
+      right: 0;
+    }
+
+    &__list {
+      padding: 1.5em;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    &__list__li {
+      margin-bottom: 1em;
+      margin-top: 1.5em;
+    }
+
+    &__item {
+      padding-left: 0.5em;
+      color: $menu-text-color;
+
+      &--border-left {
+        border-left: unset;
+      }
+    }
+  }
+
+  // Hero szekció mobilon
+  .hero {
+    height: 100%;
+    min-height: 100%;
+    &__container {
+      flex-direction: column;
+      padding: 1em;
+    }
+
+    &__opening-hours {
+      width: 100%;
+    }
+
+    &__content {
+      width: 100%;
+    }
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__hours-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      width: 100%;
+      border-radius: 1em;
+      margin-top: 1em;
+    }
+
+    &__hours-time {
+      margin-right: 0;
+    }
+  }
+
+  // About szekció mobilon
+  .about {
+    padding: 2em 0;
+    &__container {
+      padding: 2em;
+    }
+
+    &__content {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    &__image-container {
+      flex: 0 0 100%;
+      margin-bottom: 2rem;
+    }
+
+    &__text-container {
+      flex: 0 0 100%;
+    }
+  }
+
+  // Timeline szekció mobilon
+  .timeline {
+    &__line {
+      margin-left: 1em;
+
+      &::before {
+        left: 6.5em;
+      }
+    }
+
+    &__item {
+      grid-template-columns: 70px 60px 1fr;
+    }
+
+    &__year {
+      font-size: 1.3rem;
+      padding-right: 1rem;
+    }
+
+    &__icon {
+      width: 4.5em;
+      height: 4.5em;
+    }
+
+    &__svg-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__content {
+      padding-left: 1rem;
+    }
+
+    &__title {
+      font-size: 1.1rem;
+    }
+
+    &__text {
+      font-size: 0.95rem;
+    }
+  }
+
+  // Contact szekció mobilon
+  .contact {
+    padding: 0;
+
+    &__container {
+      flex-direction: column;
+    }
+
+    &__form-footer {
+      flex-direction: column;
+    }
+
+    &__form-wrapper,
+    &__donate-wrapper {
+      padding: 3em 2em;
+      left: 0;
+      border-radius: 0;
+    }
+
+    &__title {
+      font-size: 1.8rem;
+    }
+
+    &__donate-title {
+      font-size: 1.3rem;
+    }
+
+    &__star {
+      width: 100%;
+    }
+  }
+
+  // Spacer szekció mobilon
+  .spacer {
+    &__content {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    &__nav-list {
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    &__site-name {
+      font-size: 0.8rem;
+    }
+
+    &__nav-link {
+      font-size: 0.8rem;
+    }
+
+    &__star-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .subpage-content {
+    padding: 2em;
+    height: 100%;
   }
 }

@@ -1,11 +1,11 @@
 <script setup>
 useHead({
-  title: 'Kapcsolat',
+  title: 'Szja 1%',
 })
 </script>
 
 <template>
   <div class="subpage-content">
-    <ContactContent />
+    <p>Feltöltés alatt...</p>
   </div>
 </template>

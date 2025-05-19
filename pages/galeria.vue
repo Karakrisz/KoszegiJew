@@ -1,11 +1,11 @@
 <script setup>
 useHead({
-  title: 'Kapcsolat',
+  title: 'Galéria',
 })
 </script>
 
 <template>
   <div class="subpage-content">
-    <ContactContent />
+    <p>Feltöltés alatt...</p>
   </div>
 </template>

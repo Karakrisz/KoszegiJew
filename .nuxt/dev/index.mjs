@@ -187,7 +187,7 @@ const _HVfqS6FLsa = (function(nitro) {
 
 const rootDir = "/Applications/XAMPP/xamppfiles/htdocs/KoszegiJew";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"SEO-optimalizált weboldal készítés vállalkozásoknakLegyen weboldalad gyors, modern és keresőoptimalizált!"},{"name":"format-detection","content":"telephone=no"},{"hid":"robots","name":"robots","content":"index, follow"},{"http-equiv":"Content-Security-Policy","content":"\n            default-src 'self' https: data:;\n            img-src 'self' https: http: data:;\n            font-src 'self' https: data:;\n            style-src 'self' https: 'unsafe-inline';\n            script-src 'self' https: 'unsafe-inline' 'unsafe-eval';\n          "}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.ico"},{"rel":"canonical","href":"https://www.alkuszom.info"},{"rel":"preconnect","href":"https://fonts.googleapis.com"},{"rel":"preconnect","href":"https://fonts.gstatic.com"},{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap\" rel=\"stylesheet"}],"style":[],"script":[],"noscript":[],"title":"Digital Seed Studio","htmlAttrs":{"lang":"hu"}};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Legyen szó ünnepekről, megemlékezésekről vagy közös programokról, mindenkit szeretettel várunk, hogy együtt éljük meg hagyományainkat és erősítsük a közösségi összetartozást."},{"name":"format-detection","content":"telephone=no"},{"hid":"robots","name":"robots","content":"index, follow"},{"http-equiv":"Content-Security-Policy","content":"\n            default-src 'self' https: data:;\n            img-src 'self' https: http: data:;\n            font-src 'self' https: data:;\n            style-src 'self' https: 'unsafe-inline';\n            script-src 'self' https: 'unsafe-inline' 'unsafe-eval';\n          "}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.ico"},{"rel":"canonical","href":"https://www.alkuszom.info"},{"rel":"preconnect","href":"https://fonts.googleapis.com"},{"rel":"preconnect","href":"https://fonts.gstatic.com"},{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap\" rel=\"stylesheet"}],"style":[],"script":[],"noscript":[],"title":"Kőszegi Zsidó Hitközség","htmlAttrs":{"lang":"hu"}};
 
 const appRootTag = "div";
 
@@ -2492,13 +2492,10 @@ const sources$1 = [
                 "loc": "/adatvedelmi-tajekoztato"
             },
             {
-                "loc": "/ajanlatkeres"
+                "loc": "/esemenyek"
             },
             {
-                "loc": "/dokumentumok"
-            },
-            {
-                "loc": "/gepjarmu-biztositas"
+                "loc": "/galeria"
             },
             {
                 "loc": "/"
@@ -2507,25 +2504,10 @@ const sources$1 = [
                 "loc": "/kapcsolat"
             },
             {
-                "loc": "/karbejentes"
+                "loc": "/rolunk"
             },
             {
-                "loc": "/partnerek"
-            },
-            {
-                "loc": "/rendezvenyszolgalat"
-            },
-            {
-                "loc": "/szemelyes-tanacsadas"
-            },
-            {
-                "loc": "/szolgaltatasok"
-            },
-            {
-                "loc": "/tanulobiztositas"
-            },
-            {
-                "loc": "/utasbiztositas"
+                "loc": "/szja"
             }
         ],
         "sourceType": "app"
