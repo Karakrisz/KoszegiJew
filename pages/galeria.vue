@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { useFetch } from '#app'
 
 useHead({ title: 'Galéria' })
 
-const { data, pending, error } = await useFetch<{ images: string[] }>(
-  '/api/gallery'
+// Build-time glob import az assets mappából
+const modules = import.meta.glob(
+  '~/assets/gallery/*.{jpg,jpeg,png,webp,gif}',
+  {
+    eager: true,
+    import: 'default',
+    query: '?url',
+  }
 )
-if (error.value) {
-  console.error('Gallery fetch error:', error.value)
-}
-const images = data.value?.images || []
+const images = Object.values(modules) as string[]
 </script>
 
 <template>

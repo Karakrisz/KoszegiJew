@@ -4,7 +4,7 @@ import { mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parentPort, threadId } from 'node:worker_threads';
-import { existsSync, promises } from 'fs';
+import { promises } from 'fs';
 import { resolve as resolve$1 } from 'path';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Applications/XAMPP/xamppfiles/htdocs/KoszegiJew/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///Applications/XAMPP/xamppfiles/htdocs/KoszegiJew/node_modules/devalue/index.js';
@@ -2261,7 +2261,7 @@ const _8JBMVC = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_HLF20z = () => Promise.resolve().then(function () { return gallery$1; });
+const _lazy_HLF20z = () => Promise.resolve().then(function () { return gallery; });
 const _lazy_DH3w0g = () => Promise.resolve().then(function () { return seder$1; });
 const _lazy_W6dERT = () => Promise.resolve().then(function () { return soa$1; });
 const _lazy_pRxtpM = () => Promise.resolve().then(function () { return szja$1; });
@@ -2545,28 +2545,8 @@ const childSources = /*#__PURE__*/Object.freeze({
   sources: sources
 });
 
-const gallery = defineEventHandler(async () => {
-  const root = process.cwd();
-  const galleryDir = resolve$1(root, "public", "img", "gallery");
-  console.log("[gallery API] root:", root);
-  console.log("[gallery API] galleryDir:", galleryDir);
-  try {
-    if (!existsSync(galleryDir)) {
-      console.error("[gallery API] Directory not found:", galleryDir);
-      throw createError({ statusCode: 500, statusMessage: "Gal\xE9ria mappa nem tal\xE1lhat\xF3." });
-    }
-    const files = await promises.readdir(galleryDir);
-    const images = files.filter((f) => /\.(jpe?g|png|webp|gif)$/i.test(f)).map((f) => `/img/gallery/${f}`);
-    return { images };
-  } catch (error) {
-    console.error("[gallery API] Error reading gallery folder:", error);
-    throw createError({ statusCode: 500, statusMessage: error.statusMessage || "Nem siker\xFClt bet\xF6lteni a gal\xE9ria k\xE9peket." });
-  }
-});
-
-const gallery$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: gallery
+const gallery = /*#__PURE__*/Object.freeze({
+  __proto__: null
 });
 
 const seder = defineEventHandler(async () => {
