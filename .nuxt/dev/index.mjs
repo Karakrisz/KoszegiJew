@@ -4,7 +4,7 @@ import { mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parentPort, threadId } from 'node:worker_threads';
-import { promises } from 'fs';
+import { existsSync, promises } from 'fs';
 import { resolve as resolve$1 } from 'path';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Applications/XAMPP/xamppfiles/htdocs/KoszegiJew/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///Applications/XAMPP/xamppfiles/htdocs/KoszegiJew/node_modules/devalue/index.js';
@@ -2546,14 +2546,21 @@ const childSources = /*#__PURE__*/Object.freeze({
 });
 
 const gallery = defineEventHandler(async () => {
+  const root = process.cwd();
+  const galleryDir = resolve$1(root, "public", "img", "gallery");
+  console.log("[gallery API] root:", root);
+  console.log("[gallery API] galleryDir:", galleryDir);
   try {
-    const dir = resolve$1(process.cwd(), "public", "img", "gallery");
-    const files = await promises.readdir(dir);
+    if (!existsSync(galleryDir)) {
+      console.error("[gallery API] Directory not found:", galleryDir);
+      throw createError({ statusCode: 500, statusMessage: "Gal\xE9ria mappa nem tal\xE1lhat\xF3." });
+    }
+    const files = await promises.readdir(galleryDir);
     const images = files.filter((f) => /\.(jpe?g|png|webp|gif)$/i.test(f)).map((f) => `/img/gallery/${f}`);
     return { images };
   } catch (error) {
-    console.error("Error reading gallery folder:", error);
-    throw createError({ statusCode: 500, statusMessage: "Nem siker\xFClt bet\xF6lteni a gal\xE9ria k\xE9peket." });
+    console.error("[gallery API] Error reading gallery folder:", error);
+    throw createError({ statusCode: 500, statusMessage: error.statusMessage || "Nem siker\xFClt bet\xF6lteni a gal\xE9ria k\xE9peket." });
   }
 });
 

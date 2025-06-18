@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFetch, useHead } from '#app'
+import { useFetch } from '#app'
 
 useHead({ title: 'Galéria' })
 
