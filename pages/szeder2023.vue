@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import { useFetch } from '#app'
 
 useHead({ title: 'Galéria - Széder 2023' })
 
-const { data } = await useFetch<{ images: string[] }>('/api/seder')
-const images = data.value?.images || []
+// Build-time glob import az assets mappából
+const modules = import.meta.glob(
+  '~/assets/gallery/Szeder_23/*.{jpg,jpeg,png,webp,gif}',
+  {
+    eager: true,
+    import: 'default',
+    query: '?url',
+  }
+)
+const images = Object.values(modules) as string[]
 </script>
 
 <template>

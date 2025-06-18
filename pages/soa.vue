@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { useFetch } from '#app'
-
 useHead({ title: 'Galéria - SOA' })
 
-const { data } = await useFetch<{ images: string[] }>('/api/soa')
-const images = data.value?.images || []
+// Build-time glob import az assets mappából
+const modules = import.meta.glob(
+  '~/assets/gallery/soa/*.{jpg,jpeg,png,webp,gif}',
+  {
+    eager: true,
+    import: 'default',
+    query: '?url',
+  }
+)
+const images = Object.values(modules) as string[]
 </script>
 
 <template>
