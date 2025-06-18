@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useFetch } from '#app'
 
-useHead({ title: 'Galéria' })
+useHead({ title: 'Galéria - Széder 2023' })
 
-const { data } = await useFetch<{ images: string[] }>('/api/gallery')
+const { data } = await useFetch<{ images: string[] }>('/api/seder')
 const images = data.value?.images || []
 </script>
 
 <template>
   <section class="gallery-content">
     <div class="subpage-content">
-      <h3>Galéria</h3>
+      <h3>Galéria - Széder 2023</h3>
 
       <div class="gallery-grid" v-if="images.length">
         <div v-for="(src, idx) in images" :key="idx" class="gallery-item">
@@ -21,8 +21,8 @@ const images = data.value?.images || []
 
       <!-- Két link gömbként egymás mellett -->
       <div class="gallery-footer">
+        <NuxtLink to="/galeria" class="circle">Vissza a Galériához</NuxtLink>
         <NuxtLink to="/soa" class="circle">SOA</NuxtLink>
-        <NuxtLink to="/szeder2023" class="circle">Széder 2023</NuxtLink>
       </div>
     </div>
   </section>

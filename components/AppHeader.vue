@@ -1,11 +1,11 @@
 <script setup>
 const links = [
   { name: 'Főoldal', path: '/' },
-  { name: 'Események', path: '/esemenyek' },
+  // { name: 'Események', path: '/esemenyek' },
   { name: 'Galéria', path: '/galeria' },
   { name: 'Rólunk', path: '/rolunk' },
   { name: 'Kapcsolat', path: '/kapcsolat' },
-  { name: 'SZJA 1%', path: '/' },
+  { name: 'SZJA 1%', path: '/tamogatas' },
 ]
 
 const isMenuOpen = ref(false)

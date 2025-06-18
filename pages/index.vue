@@ -13,7 +13,7 @@
           várunk, hogy együtt éljük meg hagyományainkat és erősítsük a közösségi
           összetartozást.
         </p>
-        <NuxtLink to="#" class="hero__button">Csatlakozz hozzánk</NuxtLink>
+        <NuxtLink to="kapcsolat" class="hero__button">Csatlakozz hozzánk</NuxtLink>
       </div>
       <div class="hero__opening-hours">
         <div class="hero__hours-container">

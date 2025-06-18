@@ -51,7 +51,7 @@
           </div>
 
           <div class="about__button-container">
-            <a href="#history" class="about__button">Teljes történet</a>
+            <NuxtLink to="kapcsolat" class="about__button">Kapcsolat</NuxtLink>
           </div>
         </div>
       </div>

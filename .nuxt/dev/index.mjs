@@ -4,6 +4,8 @@ import { mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parentPort, threadId } from 'node:worker_threads';
+import { promises } from 'fs';
+import { resolve as resolve$1 } from 'path';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Applications/XAMPP/xamppfiles/htdocs/KoszegiJew/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///Applications/XAMPP/xamppfiles/htdocs/KoszegiJew/node_modules/devalue/index.js';
 import destr from 'file:///Applications/XAMPP/xamppfiles/htdocs/KoszegiJew/node_modules/destr/dist/index.mjs';
@@ -2259,9 +2261,17 @@ const _8JBMVC = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
+const _lazy_HLF20z = () => Promise.resolve().then(function () { return gallery$1; });
+const _lazy_DH3w0g = () => Promise.resolve().then(function () { return seder$1; });
+const _lazy_W6dERT = () => Promise.resolve().then(function () { return soa$1; });
+const _lazy_pRxtpM = () => Promise.resolve().then(function () { return szja$1; });
 const _lazy_KCX6Yz = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
+  { route: '/api/gallery', handler: _lazy_HLF20z, lazy: true, middleware: false, method: undefined },
+  { route: '/api/seder', handler: _lazy_DH3w0g, lazy: true, middleware: false, method: undefined },
+  { route: '/api/soa', handler: _lazy_W6dERT, lazy: true, middleware: false, method: undefined },
+  { route: '/api/szja', handler: _lazy_pRxtpM, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_KCX6Yz, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _nDEevH, lazy: false, middleware: true, method: undefined },
   { route: '/__site-config__/debug.json', handler: _YKPK0h, lazy: false, middleware: false, method: undefined },
@@ -2524,6 +2534,54 @@ const sources = {};
 const childSources = /*#__PURE__*/Object.freeze({
   __proto__: null,
   sources: sources
+});
+
+const gallery = defineEventHandler(async () => {
+  const dir = resolve$1(process.cwd(), "public", "img", "gallery");
+  const files = await promises.readdir(dir);
+  const images = files.filter((f) => /\.(jpe?g|png|webp|gif)$/i.test(f)).map((f) => `/img/gallery/${f}`);
+  return { images };
+});
+
+const gallery$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: gallery
+});
+
+const seder = defineEventHandler(async () => {
+  const dir = resolve$1(process.cwd(), "public", "img", "gallery", "Szeder_23");
+  const files = await promises.readdir(dir);
+  const images = files.filter((f) => /\.(jpe?g|png|webp|gif)$/i.test(f)).map((f) => `/img/gallery/Szeder_23/${f}`);
+  return { images };
+});
+
+const seder$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: seder
+});
+
+const soa = defineEventHandler(async () => {
+  const dir = resolve$1(process.cwd(), "public", "img", "gallery", "soa");
+  const files = await promises.readdir(dir);
+  const images = files.filter((f) => /\.(jpe?g|png|webp|gif)$/i.test(f)).map((f) => `/img/gallery/soa/${f}`);
+  return { images };
+});
+
+const soa$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: soa
+});
+
+const szja = defineEventHandler(async () => {
+  const dir = resolve$1(process.cwd(), "public", "img", "gallery", "szja");
+  const files = await promises.readdir(dir);
+  const images = files.filter((f) => /\.(jpe?g|png|webp|gif)$/i.test(f)).map((f) => `/img/gallery/szja/${f}`);
+  return { images };
+});
+
+const szja$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: szja
 });
 
 const Vue3 = version[0] === "3";

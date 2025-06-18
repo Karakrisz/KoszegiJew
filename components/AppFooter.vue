@@ -17,30 +17,36 @@
         <nav class="spacer__nav">
           <ul class="spacer__nav-list">
             <li class="spacer__nav-item">
-              <a href="/" class="spacer__nav-link">Főoldal</a>
+              <NuxtLink to="/" class="spacer__nav-link">Főoldal</NuxtLink>
+            </li>
+            <!-- <li class="spacer__nav-item">
+              <NuxtLink to="/esemenyek" class="spacer__nav-link"
+                >Események</NuxtLink
+              >
+            </li> -->
+            <li class="spacer__nav-item">
+              <NuxtLink to="/galeria" class="spacer__nav-link"
+                >Galéria</NuxtLink
+              >
             </li>
             <li class="spacer__nav-item">
-              <a href="/esemenyek" class="spacer__nav-link">Események</a>
+              <NuxtLink to="/rolunk" class="spacer__nav-link">Rólunk</NuxtLink>
             </li>
             <li class="spacer__nav-item">
-              <a href="/galeria" class="spacer__nav-link">Galéria</a>
+              <NuxtLink to="/kapcsolat" class="spacer__nav-link"
+                >Kapcsolat</NuxtLink
+              >
             </li>
             <li class="spacer__nav-item">
-              <a href="/rolunk" class="spacer__nav-link">Rólunk</a>
-            </li>
-            <li class="spacer__nav-item">
-              <a href="/kapcsolat" class="spacer__nav-link">Kapcsolat</a>
-            </li>
-            <li class="spacer__nav-item">
-              <a href="/adatkezeles" class="spacer__nav-link"
-                >Adatkezelési Nyilatkozat</a
+              <NuxtLink to="/" class="spacer__nav-link"
+                >Adatkezelési Nyilatkozat</NuxtLink
               >
             </li>
             <li class="spacer__nav-item spacer__nav-item--highlight">
-              <a
-                href="/tamogatas"
+              <NuxtLink
+                to="/tamogatas"
                 class="spacer__nav-link spacer__nav-link--highlight"
-                >SZJA 1%</a
+                >SZJA 1%</NuxtLink
               >
             </li>
           </ul>

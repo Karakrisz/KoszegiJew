@@ -148,7 +148,6 @@ ul {
 
 .subpage-content {
   padding: 3em 7em 0 7em;
-  height: 100vh;
   background: #fff9f4;
 }
 
@@ -259,8 +258,12 @@ ul {
 
 // Fejléc stílusok
 .header-content {
-  padding: 1.3em 6em;
   @include flex-center;
+  padding: 2em 1em;
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
 
   &__logo-box {
     width: 20%;
@@ -329,7 +332,9 @@ ul {
     height: 100%;
     justify-content: space-between;
     align-items: end;
-    padding: 3em;
+    padding-bottom: 3em;
+    max-width: 1200px;
+    margin: auto;
   }
 
   &__content {
