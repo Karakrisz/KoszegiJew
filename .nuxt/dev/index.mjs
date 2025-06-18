@@ -2517,7 +2517,16 @@ const sources$1 = [
                 "loc": "/rolunk"
             },
             {
+                "loc": "/soa"
+            },
+            {
+                "loc": "/szeder2023"
+            },
+            {
                 "loc": "/szja"
+            },
+            {
+                "loc": "/tamogatas"
             }
         ],
         "sourceType": "app"
@@ -2537,10 +2546,15 @@ const childSources = /*#__PURE__*/Object.freeze({
 });
 
 const gallery = defineEventHandler(async () => {
-  const dir = resolve$1(process.cwd(), "public", "img", "gallery");
-  const files = await promises.readdir(dir);
-  const images = files.filter((f) => /\.(jpe?g|png|webp|gif)$/i.test(f)).map((f) => `/img/gallery/${f}`);
-  return { images };
+  try {
+    const dir = resolve$1(process.cwd(), "public", "img", "gallery");
+    const files = await promises.readdir(dir);
+    const images = files.filter((f) => /\.(jpe?g|png|webp|gif)$/i.test(f)).map((f) => `/img/gallery/${f}`);
+    return { images };
+  } catch (error) {
+    console.error("Error reading gallery folder:", error);
+    throw createError({ statusCode: 500, statusMessage: "Nem siker\xFClt bet\xF6lteni a gal\xE9ria k\xE9peket." });
+  }
 });
 
 const gallery$1 = /*#__PURE__*/Object.freeze({

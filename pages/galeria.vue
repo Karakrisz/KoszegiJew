@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { useFetch } from '#app'
+import { useFetch, useHead } from '#app'
 
 useHead({ title: 'Galéria' })
 
-const { data } = await useFetch<{ images: string[] }>('/api/gallery')
+const { data, pending, error } = await useFetch<{ images: string[] }>(
+  '/api/gallery'
+)
+if (error.value) {
+  console.error('Gallery fetch error:', error.value)
+}
 const images = data.value?.images || []
 </script>
 
