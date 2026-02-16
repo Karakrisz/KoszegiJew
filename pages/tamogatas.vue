@@ -8,7 +8,7 @@ const modules = import.meta.glob(
     eager: true,
     import: 'default',
     query: '?url',
-  }
+  },
 )
 const images = Object.values(modules) as string[]
 </script>
