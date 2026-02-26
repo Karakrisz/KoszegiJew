@@ -27,6 +27,28 @@
       </div>
     </div>
   </section>
+  <section class="invitation">
+    <div class="invitation__container">
+      <div class="invitation__card">
+        <div class="invitation__content">
+          <h2 class="invitation__title">Meghívó</h2>
+          <p class="invitation__text">
+            Szeretettel várunk ünnepi alkalmunkra. A részleteket a meghívón
+            találod.
+          </p>
+        </div>
+        <div class="invitation__media">
+          <NuxtImg
+            class="invitation__img"
+            src="/img/peszach.jpg"
+            alt="Pészach meghívó"
+            loading="lazy"
+            format="jpg"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="gratitude">
     <div class="gratitude__container">
       <div class="gratitude__card">
@@ -54,6 +76,67 @@
 </template>
 
 <style scoped lang="scss">
+.invitation {
+  background: #fcefe3;
+  padding: 3.5rem 0;
+}
+
+.invitation__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.invitation__card {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 2.5rem;
+  align-items: center;
+  background: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.invitation__title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.invitation__text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  margin: 0 0 1.5rem 0;
+}
+
+.invitation__button {
+  border-radius: 6px;
+  background: #479dd0;
+  display: inline-flex;
+  padding: 1em 2em;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  width: max-content;
+}
+
+.invitation__media {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.invitation__img {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
 .gratitude {
   background: #fff9f4;
   padding: 3.5rem 0;
@@ -104,6 +187,20 @@
 }
 
 @media screen and (max-width: 767px) {
+  .invitation {
+    padding: 2.5rem 0;
+  }
+
+  .invitation__card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .invitation__img {
+    max-height: 320px;
+  }
+
   .gratitude {
     padding: 2.5rem 0;
   }
